@@ -6,9 +6,12 @@ import com.gratitude.agradecimientos.persistence.crud.AgradecimientoCRUDReposito
 import com.gratitude.agradecimientos.persistence.entity.Agradecimiento;
 import com.gratitude.agradecimientos.persistence.mapper.ThanksMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
+@Repository
 public class AgradecimientoRepository implements ThanksRepository {
     @Autowired
     private AgradecimientoCRUDRepository agradecimientoCRUDRepository;
@@ -22,8 +25,19 @@ public class AgradecimientoRepository implements ThanksRepository {
     }
 
     @Override
+    public Optional<Thanks> getThanks(int thanksId) {
+        Optional<Agradecimiento> agradecimientos = agradecimientoCRUDRepository.findById(thanksId);
+        return agradecimientos.map(agradecimiento -> mapper.toThanks(agradecimiento));
+    }
+
+    @Override
     public Thanks save(Thanks thanks) {
         Agradecimiento agradecimiento = mapper.toAgradecimiento(thanks);
         return mapper.toThanks(agradecimientoCRUDRepository.save(agradecimiento));
+    }
+
+    @Override
+    public void delete(int thanksId) {
+        agradecimientoCRUDRepository.deleteById(thanksId);
     }
 }

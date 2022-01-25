@@ -24,4 +24,13 @@ public class ThanksController {
         public ResponseEntity<Thanks> save(@RequestBody Thanks thanks){
         return new ResponseEntity<>(thanksService.save(thanks), HttpStatus.CREATED);
     }
+
+    @DeleteMapping("/delete/{id}")
+        public ResponseEntity delete(@PathVariable("id") int thanksId){
+        if (thanksService.deleteById(thanksId)){
+            return new ResponseEntity<>(HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }
