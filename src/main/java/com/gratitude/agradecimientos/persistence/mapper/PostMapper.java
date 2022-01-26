@@ -18,11 +18,11 @@ public interface PostMapper {
             @Mapping(source = "fecha", target = "date"),
             @Mapping(source = "agradecimientos", target= "ThanksList")
     })
-    Post toPost();
+    Post toPost(Entrada entrada);
     List<Post> toPosts(List<Entrada> entradas);
 
     @InheritInverseConfiguration
     @Mapping(target = "user", ignore = true)
-    Entrada toEntrada();
+    Entrada toEntrada(Post post);
 
 }

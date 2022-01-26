@@ -26,16 +26,18 @@ public class EntradaRepository implements PostRepository {
 
     @Override
     public Optional<Post> getPost(int postId) {
-        return Optional.empty();
+        Optional<Entrada> entradas = entradaCRUDRespository.findById(postId);
+        return entradas.map(entrada -> mapper.toPost(entrada));
     }
 
     @Override
     public Post save(Post post) {
-        return null;
+       Entrada entrada = mapper.toEntrada(post);
+       return mapper.toPost(entradaCRUDRespository.save(entrada));
     }
 
     @Override
     public void delete(int postId) {
-
+    entradaCRUDRespository.deleteById(postId);
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/thanks")
@@ -18,6 +19,15 @@ public class ThanksController {
     @GetMapping("/all")
     public ResponseEntity<List<Thanks>> getAll(){
         return new ResponseEntity<>(thanksService.getAll(), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<Thanks>> getThanks(@PathVariable int thanksId){
+        if (thanksService.getThanks(thanksId).isPresent()){
+            return new ResponseEntity<>(thanksService.getThanks(thanksId), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @PostMapping("/save")
