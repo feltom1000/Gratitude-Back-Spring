@@ -11,6 +11,7 @@ public class EntradaAgradecimiento {
     private EntradaAgradecimientoPK id;
 
     @ManyToOne
+    @MapsId("idEntrada")
     @JoinColumn(name = "id_entrada", insertable = false, updatable = false)
     private Entrada entrada;
 
