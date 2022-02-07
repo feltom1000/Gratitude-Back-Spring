@@ -22,7 +22,7 @@ public class ThanksController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Thanks>> getThanks(@PathVariable int thanksId){
+    public ResponseEntity<Optional<Thanks>> getThanks(@PathVariable("id") int thanksId){
         if (thanksService.getThanks(thanksId).isPresent()){
             return new ResponseEntity<>(thanksService.getThanks(thanksId), HttpStatus.OK);
         } else {

@@ -16,7 +16,7 @@ public interface PostMapper {
             @Mapping(source = "idEntrada", target = "postId"),
             @Mapping(source = "idUsuario", target = "userId"),
             @Mapping(source = "fecha", target = "date"),
-            @Mapping(source = "agradecimientos", target= "ThanksList")
+            @Mapping(source = "agradecimientos", target= "thanksList")
     })
     Post toPost(Entrada entrada);
     List<Post> toPosts(List<Entrada> entradas);

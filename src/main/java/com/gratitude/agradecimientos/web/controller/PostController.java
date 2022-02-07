@@ -32,7 +32,7 @@ public class PostController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Post> save(Post post){
+    public ResponseEntity<Post> save(@RequestBody Post post){
         return new ResponseEntity<>(postService.save(post), HttpStatus.CREATED);
     }
 }

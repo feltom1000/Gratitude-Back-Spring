@@ -6,7 +6,6 @@ import java.io.Serializable;
 
 @Embeddable
 public class EntradaAgradecimientoPK implements Serializable {
-
     @Column(name = "id_entrada")
     private Integer idEntrada;
 

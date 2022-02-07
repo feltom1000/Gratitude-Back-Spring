@@ -18,7 +18,6 @@ public class EntradaRepository implements PostRepository {
     @Autowired
     private PostMapper mapper;
 
-
     @Override
     public List<Post> getAll() {
         return mapper.toPosts((List<Entrada>) entradaCRUDRespository.findAll());
@@ -36,8 +35,4 @@ public class EntradaRepository implements PostRepository {
        return mapper.toPost(entradaCRUDRespository.save(entrada));
     }
 
-    @Override
-    public void delete(int postId) {
-    entradaCRUDRespository.deleteById(postId);
-    }
 }

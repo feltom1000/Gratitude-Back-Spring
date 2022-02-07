@@ -1,10 +1,9 @@
 package com.gratitude.agradecimientos.persistence.entity;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
-@Table(name = "entrada_agradecimiento")
+@Table(name = "entradas_agradecimiento")
 public class EntradaAgradecimiento {
 
     @EmbeddedId

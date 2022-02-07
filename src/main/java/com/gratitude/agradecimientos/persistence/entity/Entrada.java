@@ -17,9 +17,6 @@ public class Entrada {
 
     private Date fecha;
 
-//    @Column(name = "id_agradecimientos")
-//    private Integer idAgradecimientos;
-
     @ManyToOne
     @JoinColumn(name = "id_user", insertable = false, updatable = false)
     private Usuario user;

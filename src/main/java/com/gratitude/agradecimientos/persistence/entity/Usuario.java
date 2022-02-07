@@ -14,7 +14,6 @@ public class Usuario {
 
     private String nombre;
 
-    @Column(name = "e-mail")
     private String email;
 
     @OneToMany(mappedBy = "user")
